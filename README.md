@@ -10,11 +10,11 @@ iTunes Sync Android is a command line utility to sync one of your iTunes playlis
 ## Usage
 
 ```bash
-macruby itunes_sync_android.rb "/Volumnes/NO NAME/Music" "Nexus One Sync"
+$ macruby itunes_sync_android.rb <destination folder> <playlist name>
 ```
 
 For example, if you want to copy your song files from your iTunes playlist **Nexus One Sync** to your Android phone mounted via USB on **/Volumes/NO NAME/Music**
 
 ```bash
-macruby itunes_sync_android.rb "/Volumnes/NO NAME/Music" "Nexus One Sync"
+$ macruby itunes_sync_android.rb "/Volumnes/NO NAME/Music" "Nexus One Sync"
 ```
