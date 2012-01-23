@@ -17,6 +17,9 @@ else
 end
 itunes_playlist  = ARGV[1] || DEFAULT_PLAYLIST
 
+M3U_filename = "#{itunes_playlist}.m3u"
+m3u_string = ""
+
 itunes = SBApplication.applicationWithBundleIdentifier("com.apple.iTunes")
 # playlist = itunes.sources["Library"].userPlaylists["*Nexus One Sync"]
 
@@ -30,6 +33,7 @@ itunes.sources.each do |source|
         play_list.fileTracks.each do |fileTrack|
           path = fileTrack.location.path.to_s
           filename = fileTrack.location.lastPathComponent.to_s
+          m3u_string = filename + "\n" + m3u_string
           FileUtils.cp(path, "#{destination_path}/#{filename}")
           puts "Song file... #{filename}"
         end
@@ -37,5 +41,5 @@ itunes.sources.each do |source|
     end
   end
 end
-
+File.open("#{destination_path}/#{M3U_filename}", "w" ).write(m3u_string)
 puts "Done!"
