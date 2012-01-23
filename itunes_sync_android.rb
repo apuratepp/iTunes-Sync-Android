@@ -7,15 +7,15 @@ framework 'Foundation'
 framework 'ScriptingBridge'
 
 SOURCE = "Library"
-DEFAULT_PLAYLIST = "Nexus One Sync"
+itunes_playlist  = ARGV[1] || "Nexus One Sync"
 
 if ARGV[0].nil?
   destination_path = "#{Dir.home}/Desktop/#{itunes_playlist}-#{Time.now.strftime("%Y%m%d%H%M%S")}"
-  FileUtils.mkdir_p destination_path
 else
-  destination_path = ARGV[0]
+  destination_path = ARGV[0] + "/#{itunes_playlist}"
 end
-itunes_playlist  = ARGV[1] || DEFAULT_PLAYLIST
+
+FileUtils.mkdir_p destination_path
 
 M3U_filename = "#{itunes_playlist}.m3u"
 m3u_string = ""
@@ -23,7 +23,7 @@ m3u_string = ""
 itunes = SBApplication.applicationWithBundleIdentifier("com.apple.iTunes")
 # playlist = itunes.sources["Library"].userPlaylists["*Nexus One Sync"]
 
-puts "Copying files from playlist \"#{itunes_playlist}\" to path: #{destination_path}"
+puts "Copying files from playlist \"#{itunes_playlist}\" to path #{destination_path}"
 
 itunes.sources.each do |source|
   library = source 
@@ -33,7 +33,7 @@ itunes.sources.each do |source|
         play_list.fileTracks.each do |fileTrack|
           path = fileTrack.location.path.to_s
           filename = fileTrack.location.lastPathComponent.to_s
-          m3u_string = filename + "\n" + m3u_string
+          m3u_string = m3u_string + "\n" + filename
           FileUtils.cp(path, "#{destination_path}/#{filename}")
           puts "Song file... #{filename}"
         end
