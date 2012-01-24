@@ -1,6 +1,6 @@
 iTunes Sync Android
 ===================
-iTunes Sync Android is a command line utility to sync one of your iTunes playlists to any Android cell phone mounted as a disk volume on your Mac.
+iTunes Sync Android is a command line utility to sync (actually copy) one of your iTunes playlists to any Android cell phone mounted as a disk volume on your Mac. It's an experiment to copy playlists to my Nexus One, which doesn't sync with iTunes :(
 
 ## Requisites
 * [MacRuby](http://www.macruby.org/) 0.9 or later
