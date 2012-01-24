@@ -21,5 +21,5 @@ $ macruby itunes_sync_android.rb "/Volumnes/NO NAME/Music" "Nexus One Sync"
 
 ## Todo
 * Fix bugs. Failed to copy songs with special characters (like ñ)
-* Take care of duplicate playlists names
+* Take care of duplicated playlists names
 * more Todo
